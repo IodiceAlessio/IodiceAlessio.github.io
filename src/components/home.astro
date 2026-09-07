@@ -17,11 +17,10 @@ const socialIcons: Record<string, string> = {
 
 const socialLinks = [
   ...cv.profile.socials.map((social) => ({
-    href: social.url,
-    label: social.plattform,
-    icon: socialIcons[social.plattform.toLowerCase()] ?? socialIcons.email,
-  })),
-  { href: `mailto:${cv.profile.email}`, label: "Email", icon: socialIcons.email },
+    href: social.platform === 'Email' ? `mailto:${cv.profile.email}` : social.url,
+    label: social.platform,
+    icon: socialIcons[social.platform.toLowerCase()] ?? socialIcons.email,
+  }))
 ];
 ---
 

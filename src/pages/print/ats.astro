@@ -1,0 +1,30 @@
+---
+import { loadData } from "@/lib/parser";
+import AtsResume from "@/components/pdf/AtsResume.astro";
+
+const data = await loadData();
+const pageTitle = `${data.profile.name} — ATS Resume`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style is:global>
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <AtsResume data={data} />
+  </body>
+</html>
