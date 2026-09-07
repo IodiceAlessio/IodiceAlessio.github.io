@@ -2,20 +2,18 @@
   "profile": {
     "name": "Alessio",
     "title": "Software Engineer",
-    "email": "hello@example.com",
-    "phone": "+00 000 0000000",
     "location": "Your city, Your country",
     "website": "https://iodicealessio.github.io/",
     "avatar": "/avatar.svg",
     "bio": "Placeholder content — replace with real content in step 6. (This is example content from cv.example.json, adapted as scaffolding for the site.)",
     "socials": [
       {
-        "plattform": "GitHub",
+        "platform": "GitHub",
         "url": "https://github.com",
         "username": "example"
       },
       {
-        "plattform": "LinkedIn",
+        "platform": "LinkedIn",
         "url": "https://linkedin.com",
         "username": "example"
       }

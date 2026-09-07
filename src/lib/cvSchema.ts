@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const socialSchema = z.object({
-    plattform: z.string(),
+    platform: z.string(),
     url: z.url(),
     username: z.string().optional(),
 })
@@ -9,7 +9,7 @@ export const socialSchema = z.object({
 export const profileSchema = z.object ({
     name: z.string(),
     title: z.string(), // Job title
-    email: z.email(),
+    email: z.email().optional(),
     phone: z.string().optional(),
     location: z.string().optional(), // City, Country
     website: z.url().optional(), // Personal website

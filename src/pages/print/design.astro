@@ -1,0 +1,34 @@
+---
+import { loadData } from "@/lib/parser";
+import { loadConfig } from "@/lib/parser/configParser";
+import { resolvePdfTheme } from "@/themes/registry";
+
+const data = await loadData();
+const config = await loadConfig();
+const DesignPdfComponent = resolvePdfTheme(config.theme);
+
+const pageTitle = `${data.profile.name} — Design CV`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style is:global>
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <DesignPdfComponent data={data} />
+  </body>
+</html>

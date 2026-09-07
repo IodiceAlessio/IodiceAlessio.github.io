@@ -38,6 +38,62 @@ const currentYear = new Date().getFullYear();
             ))
           }
         </div>
+
+        <div class="relative" id="cv-download-menu">
+          <button
+            type="button"
+            id="cv-download-trigger"
+            aria-haspopup="true"
+            aria-expanded="false"
+            class="flex items-center h-11 gap-2 px-4 text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-5"
+            >
+              <path d="M13 10H18L12 16L6 10H11V3H13V10ZM4 19H20V12H22V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V12H4V19Z"
+              ></path>
+            </svg>
+            <span class="text-sm">Download CV</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-3.5 transition-transform"
+              id="cv-download-chevron"
+            >
+              <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"
+              ></path>
+            </svg>
+          </button>
+          <div
+            id="cv-download-options"
+            class="hidden absolute left-0 top-[calc(100%+8px)] min-w-[220px] flex flex-col gap-0.5 p-1.5 rounded-xl border border-[var(--white-icon-tr)] bg-[#141414] shadow-xl z-10"
+          >
+            <button
+              type="button"
+              data-print-pdf="ats"
+              class="flex flex-col items-start gap-0.5 px-3 py-2 rounded-lg text-left hover:bg-[var(--white-icon-tr)]"
+            >
+              <span class="text-sm text-[var(--white)]">ATS Resume</span>
+              <span class="text-xs text-[var(--white-icon)]"
+                >Plain text, optimized for automated parsing</span
+              >
+            </button>
+            <button
+              type="button"
+              data-print-pdf="design"
+              class="flex flex-col items-start gap-0.5 px-3 py-2 rounded-lg text-left hover:bg-[var(--white-icon-tr)]"
+            >
+              <span class="text-sm text-[var(--white)]">Design CV</span>
+              <span class="text-xs text-[var(--white-icon)]"
+                >Styled layout, for sending directly to a person</span
+              >
+            </button>
+          </div>
+        </div>
       </div>
 
       <div class="flex flex-col items-center space-y-6">
@@ -93,3 +149,44 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<script>
+  const menu = document.getElementById("cv-download-menu");
+  const trigger = document.getElementById("cv-download-trigger");
+  const options = document.getElementById("cv-download-options");
+  const chevron = document.getElementById("cv-download-chevron");
+
+  function closeMenu() {
+    options?.classList.add("hidden");
+    trigger?.setAttribute("aria-expanded", "false");
+    chevron?.classList.remove("rotate-180");
+  }
+
+  function toggleMenu() {
+    const isOpen = !options?.classList.contains("hidden");
+    if (isOpen) {
+      closeMenu();
+    } else {
+      options?.classList.remove("hidden");
+      trigger?.setAttribute("aria-expanded", "true");
+      chevron?.classList.add("rotate-180");
+    }
+  }
+
+  trigger?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleMenu();
+  });
+
+  options?.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement | null)?.closest("[data-print-pdf]")) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (menu && !menu.contains(event.target as Node)) {
+      closeMenu();
+    }
+  });
+</script>
