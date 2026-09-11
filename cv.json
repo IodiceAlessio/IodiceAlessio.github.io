@@ -1,121 +1,218 @@
 {
   "profile": {
-    "name": "Alessio",
-    "title": "Software Engineer",
-    "location": "Your city, Your country",
+    "name": "Alessio Iodice",
+    "title": "Senior Software Engineer",
+    "location": "Turin, Italy",
     "website": "https://iodicealessio.github.io/",
     "avatar": "/avatar.svg",
-    "bio": "Placeholder content — replace with real content in step 6. (This is example content from cv.example.json, adapted as scaffolding for the site.)",
+    "bio": "Software engineer with 6+ years of experience in e-commerce and digital transformation, currently Senior Consultant and Tech Lead at Deloitte Digital. I design and build integrations between high-traffic B2C commerce platforms and the surrounding enterprise landscape — IAM, CRM, ERP, OMS and payment gateways — applying distributed systems patterns such as transactional outbox, dual-write with reconciliation, idempotent webhook handling and graceful degradation. I care about systems that stay correct under partial failure and remain maintainable over time.",
     "socials": [
       {
         "platform": "GitHub",
-        "url": "https://github.com",
-        "username": "example"
+        "url": "https://github.com/iodicealessio",
+        "username": "iodicealessio"
       },
       {
         "platform": "LinkedIn",
-        "url": "https://linkedin.com",
-        "username": "example"
+        "url": "https://www.linkedin.com/in/alessio-iodicea39199195",
+        "username": "alessio-iodicea39199195"
       }
     ]
   },
   "experience": [
     {
-      "company": "Example Tech Ltd.",
-      "role": "Senior Fullstack Engineer",
-      "location": "Berlin, Germany",
-      "startDate": "2023-01",
+      "company": "Deloitte Digital",
+      "role": "Senior Consultant — Tech Lead",
+      "location": "Turin, Italy",
+      "startDate": "2023-12",
       "endDate": null,
       "current": true,
-      "description": "Leading the core web development team building high-performance web applications and design systems.",
+      "description": "Technical lead on B2C e-commerce projects across the retail, home appliances and automotive sectors, built on Salesforce Commerce Cloud with Node.js and React.js.",
       "highlights": [
-        "Architected scalable frontend components using Astro and TypeScript",
-        "Improved website loading performance and Core Web Vitals by 40%",
-        "Mentored junior developers and established automated testing pipelines"
+        "Designed and implemented the order export flow to the OMS using a transactional outbox pattern, decoupling order capture from downstream delivery and guaranteeing eventual consistency under partial failure",
+        "Built CRM synchronisation as a dual-write with asynchronous reconciliation and a read-through cache, with explicit graceful degradation so checkout remains available when the external service is unreachable",
+        "Implemented payment gateway webhook handling with ack-on-receipt semantics to prevent head-of-line blocking, and specified the target asynchronous architecture with a dead-letter queue for failed events",
+        "Built batch ingestion pipelines for product catalogue data (PIM) via timestamped XML feeds, with validation and retry handling",
+        "Designed and troubleshot a layered CDN architecture (client-managed CDN in front of the platform CDN), including diagnosis of cache-related content visibility issues",
+        "Acted as the main technical point of contact with client architects and third-party vendors on integration design and failure-handling strategy",
+        "Mentored junior engineers, reviewed code and supported their technical growth"
       ],
-      "technologies": ["Astro", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL"]
+      "technologies": ["Salesforce Commerce Cloud", "Node.js", "React.js", "JavaScript", "REST APIs", "Webhooks", "Adyen", "Stripe"]
     },
     {
-      "company": "Sample Solutions Inc.",
-      "role": "Frontend Developer",
-      "location": "Munich, Germany",
-      "startDate": "2020-03",
-      "endDate": "2022-12",
+      "company": "Deloitte Digital",
+      "role": "Consultant",
+      "location": "Milan, Italy",
+      "startDate": "2021-12",
+      "endDate": "2023-11",
       "current": false,
-      "description": "Built responsive web applications and interactive client portals.",
+      "description": "Developed and maintained integrations and custom commerce features on Salesforce Commerce Cloud for enterprise B2C clients.",
       "highlights": [
-        "Implemented accessible (WCAG 2.1 AA compliant) UI components",
-        "Integrated REST and GraphQL APIs"
+        "Took increasing ownership of technical design decisions and of the delivery of assigned workstreams",
+        "Built integrations with external systems including IAM, CRM, ERP and OMS"
       ],
-      "technologies": ["React", "TypeScript", "GraphQL", "CSS3"]
+      "technologies": ["Salesforce Commerce Cloud", "Node.js", "JavaScript", "REST APIs"]
+    },
+    {
+      "company": "Deloitte Digital",
+      "role": "Analyst",
+      "location": "Milan, Italy",
+      "startDate": "2020-02",
+      "endDate": "2021-11",
+      "current": false,
+      "description": "Contributed to front-end and back-end development on B2C commerce projects, building platform expertise in Salesforce Commerce Cloud.",
+      "highlights": [
+        "Earned the Salesforce B2C Commerce Developer certification",
+        "Developed custom storefront features and supported integration work"
+      ],
+      "technologies": ["Salesforce Commerce Cloud", "JavaScript", "HTML", "CSS"]
+    },
+    {
+      "company": "SmartUp Engineering",
+      "role": "Full Stack Software Engineer",
+      "location": "Naples, Italy",
+      "startDate": "2019-10",
+      "endDate": "2020-01",
+      "current": false,
+      "description": "Improved the user interface of JPAD (Java toolchain of Programs for Aircraft Design).",
+      "highlights": [
+        "Designed a data-driven UI system that generates form fields automatically from the structure and data types of XML input files",
+        "Enabled parameter preloading and customisation across diverse aircraft configurations"
+      ],
+      "technologies": ["Java", "JavaFX", "JFoenix", "XML", "Git", "Gradle"]
+    },
+    {
+      "company": "Università degli Studi di Napoli Federico II",
+      "role": "Student Internship",
+      "location": "Naples, Italy",
+      "startDate": "2019-06",
+      "endDate": "2019-09",
+      "current": false,
+      "description": "Performance analysis and optimisation of the JPAD aircraft design system.",
+      "highlights": [
+        "Profiled the system to identify computational bottlenecks in aircraft analysis routines",
+        "Introduced parallelisation to heavy processing paths, reducing execution time for analyses and plot generation"
+      ],
+      "technologies": ["Java", "VisualVM", "Git", "Gradle"]
+    },
+    {
+      "company": "Young Minds Academy",
+      "role": "Full Stack Software Engineer",
+      "location": "Naples, Italy",
+      "startDate": "2019-05",
+      "endDate": "2019-07",
+      "current": false,
+      "description": "Built an eLearning platform supporting assessments and course material delivery.",
+      "highlights": [
+        "Implemented configurable test rules, user profile management and statistical reporting on test performance"
+      ],
+      "technologies": ["PHP", "Symfony", "PostgreSQL", "HTML", "CSS", "SVN"]
+    },
+    {
+      "company": "IPE — Istituto per Ricerche ed Attività Educative",
+      "role": "Full Stack Software Engineer",
+      "location": "Naples, Italy",
+      "startDate": "2019-03",
+      "endDate": "2019-07",
+      "current": false,
+      "description": "Developed a CRM handling applicant registration for the institute's open calls.",
+      "highlights": [
+        "Built registration and applicant management flows from requirements to delivery"
+      ],
+      "technologies": ["PHP", "Symfony", "MySQL", "HTML", "CSS", "SVN"]
+    },
+    {
+      "company": "Freelance",
+      "role": "Web Developer",
+      "location": "Naples, Italy",
+      "startDate": "2016-01",
+      "endDate": "2019-01",
+      "current": false,
+      "description": "Delivered web development projects for small business clients.",
+      "highlights": [
+        "Handled requirements gathering, implementation and delivery end to end"
+      ],
+      "technologies": ["PHP", "JavaScript", "HTML", "CSS", "MySQL"]
     }
   ],
   "education": [
     {
-      "institution": "Example University of Science",
-      "degree": "Master of Science",
-      "fieldOfStudy": "Computer Science",
-      "startDate": "2017-10",
-      "endDate": "2019-12",
-      "location": "Berlin, Germany",
-      "highlights": [
-        "Specialization in Distributed Systems and Software Architecture",
-        "Master Thesis on Web Framework Performance"
-      ]
-    },
-    {
-      "institution": "Example University of Applied Sciences",
+      "institution": "Università degli Studi di Napoli Federico II",
       "degree": "Bachelor of Science",
-      "fieldOfStudy": "Media Informatics",
-      "startDate": "2014-09",
-      "endDate": "2017-08",
-      "location": "Hamburg, Germany",
+      "fieldOfStudy": "Computer Science",
+      "startDate": "2013-09",
+      "endDate": "2019-07",
+      "location": "Naples, Italy",
       "highlights": [
-        "Graduated with honors"
+        "Final grade: 97/110",
+        "Thesis on the optimisation of a tool for aeronautical project analysis, introducing parallelisation and performance profiling (VisualVM)"
       ]
     }
   ],
   "skills": [
     {
+      "category": "Distributed Systems & Integration Patterns",
+      "skills": ["Transactional Outbox", "Dual-Write & Reconciliation", "Idempotency", "At-Least-Once Delivery", "Graceful Degradation", "Eventual Consistency", "Read-Through Cache", "Webhook Handling", "Batch Ingestion Pipelines"]
+    },
+    {
       "category": "Languages & Core",
-      "skills": ["TypeScript", "JavaScript", "HTML5", "CSS3", "SQL"]
+      "skills": ["JavaScript", "Java", "PHP", "Python", "SQL", "PL/SQL", "HTML5", "CSS3"]
     },
     {
       "category": "Frameworks & Libraries",
-      "skills": ["Astro", "React", "Next.js", "Node.js", "Express", "Zod"]
+      "skills": ["Node.js", "React.js", "Vue.js", "Astro", "FastAPI", "Symfony", "JavaFX"]
+    },
+    {
+      "category": "Platforms & Integrations",
+      "skills": ["Salesforce Commerce Cloud (SFCC) B2C", "Headless Commerce", "IAM", "CRM", "ERP", "OMS", "Adyen", "Stripe", "REST APIs", "CDN architecture"]
+    },
+    {
+      "category": "Databases",
+      "skills": ["PostgreSQL", "MySQL", "Oracle (PL/SQL)"]
     },
     {
       "category": "Tools & Infrastructure",
-      "skills": ["Git", "Docker", "Vite", "CI/CD (GitHub Actions)"]
+      "skills": ["Git", "GitHub Actions", "Gradle", "SVN", "WebDAV", "AWS (learning)"]
     }
   ],
   "projects": [
     {
-      "title": "dotcv Example Project",
-      "description": "An open-source resume and portfolio generator powered by Astro with automatic ATS-friendly PDF exports.",
-      "url": "https://github.com/example/dotcv",
-      "technologies": ["Astro", "TypeScript", "Zod"],
+      "title": "Personal Portfolio & CV Site",
+      "description": "Static portfolio and CV site built with Astro, driven by a single structured cv.json validated with Zod, with an ATS-friendly print route for PDF export.",
+      "url": "https://iodicealessio.github.io/",
+      "technologies": ["Astro", "TypeScript", "Zod", "GitHub Actions", "GitHub Pages"],
       "highlights": [
-        "Format-agnostic parsing (JSON, YAML, XML)",
-        "Zero-config PDF generation and theme system"
+        "Single source of truth: all content driven by a schema-validated cv.json",
+        "ATS-friendly print route generating a PDF via the browser print pipeline",
+        "Automated build and deploy through GitHub Actions"
+      ]
+    },
+    {
+      "title": "Recipe Manager",
+      "description": "Full-stack recipe management application built as a personal project, used as a testbed for backend patterns and cloud deployment.",
+      "url": "https://github.com/iodicealessio",
+      "technologies": ["Python", "FastAPI", "Vue.js", "PostgreSQL"],
+      "highlights": [
+        "REST API built with FastAPI, with a Vue.js single-page frontend",
+        "Used as the deployment target for hands-on AWS experience"
       ]
     }
   ],
   "certifications": [
     {
-      "title": "Example Cloud Certification",
-      "issuer": "Cloud Provider",
-      "date": "2023-05",
-      "url": "https://example.com/cert/123"
+      "title": "Salesforce Certified B2C Commerce Developer",
+      "issuer": "Salesforce",
+      "date": "2022-01",
+      "url": "https://www.salesforce.com/trailblazer/aiodice2"
     }
   ],
   "languages": [
     {
-      "language": "English",
-      "fluency": "Fluent / Native"
+      "language": "Italian",
+      "fluency": "Native"
     },
     {
-      "language": "German",
+      "language": "English",
       "fluency": "Professional Working Proficiency"
     }
   ]
