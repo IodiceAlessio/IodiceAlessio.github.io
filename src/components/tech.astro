@@ -1,0 +1,50 @@
+---
+import Tag from "@/components/Tag.astro";
+import { loadData } from "@/lib/parser";
+
+const cv = await loadData();
+---
+
+<section id="tech" class="py-12 border-t border-[#ffffff10] text-[var(--white)]">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">What I work with</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-8">Tech Stack</h3>
+
+    {
+      cv.skills.length > 0 && (
+        <div class="mb-10">
+          <h4 class="text-sm uppercase tracking-wide text-[var(--white-icon)] mb-4">
+            Professional
+          </h4>
+          <div class="flex flex-col gap-4">
+            {cv.skills.map((group) => (
+              <div>
+                <p class="text-sm text-[var(--sec)] mb-2">{group.category}</p>
+                <div class="flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <span class="text-xs px-2.5 py-1 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)]">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    {
+      cv.currentlyExploring.length > 0 && (
+        <div>
+          <h4 class="text-sm uppercase tracking-wide text-[var(--white-icon)] mb-4">
+            Currently Exploring
+          </h4>
+          <div class="flex flex-wrap gap-2">
+            {cv.currentlyExploring.map((tech) => <Tag>{tech}</Tag>)}
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>

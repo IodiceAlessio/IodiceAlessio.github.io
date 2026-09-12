@@ -2,17 +2,23 @@
 import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/nav.astro";
 import Home from "@/components/home.astro";
+import SelectedWork from "@/components/selectedWork.astro";
+import PersonalProjects from "@/components/personalProjects.astro";
 import Experience from "@/components/experience.astro";
-import Projects from "@/components/projects.astro";
+import Tech from "@/components/tech.astro";
+import About from "@/components/about.astro";
 import Education from "@/components/education.astro";
 import Footer from "@/components/footer.astro";
 ---
 
-<Layout title="Your name">
+<Layout>
   <Nav />
   <Home />
+  <SelectedWork />
+  <PersonalProjects />
   <Experience />
-  <Projects />
+  <Tech />
+  <About />
   <Education />
   <Footer />
 
