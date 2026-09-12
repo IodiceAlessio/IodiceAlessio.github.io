@@ -15,6 +15,8 @@ export const profileSchema = z.object ({
     website: z.url().optional(), // Personal website
     avatar: z.string().default("/avatar.svg"), // Path or URL to the avatar image
     bio: z.string().optional(), // About me
+    philosophy: z.string().optional(), // About / Engineering Philosophy body
+    careerStartDate: z.string().optional(), // exp. '2019-10' — when to start counting "years of experience" from (may differ from the earliest entry in `experience`, e.g. excluding freelance/student work)
     socials: z.array(socialSchema).default([]),
 })
 
@@ -45,12 +47,30 @@ export const skillCategorySchema = z.object({
     skills: z.array(z.string()), // exp. ['JavaScript', 'React', 'Node.js']
 })
 
+export const roadmapItemSchema = z.object({
+    label: z.string(),
+    done: z.boolean(),
+})
+
 export const projectItemSchema = z.object({
     title: z.string(),
     description: z.string().optional(),
     url: z.url().optional(),
     technologies: z.array(z.string()).default([]),
     highlights: z.array(z.string()).default([]),
+    status: z.string().optional(), // exp. 'Live', 'Work in progress'
+    roadmap: z.array(roadmapItemSchema).default([]),
+})
+
+export const caseStudySchema = z.object({
+    title: z.string(),
+    context: z.string(),
+    problem: z.string(),
+    approach: z.string(),
+    decisions: z.string(),
+    result: z.string(),
+    lessonsLearned: z.string().optional(),
+    technologies: z.array(z.string()).default([]),
 })
 
 export const certificationsSchema = z.object({
@@ -70,7 +90,9 @@ export const cvSchema = z.object({
     experience: z.array(experienceSchema).default([]),
     education: z.array(educationItemSchema).default([]),
     skills: z.array(skillCategorySchema).default([]),
+    currentlyExploring: z.array(z.string()).default([]),
     projects: z.array(projectItemSchema).default([]),
+    caseStudies: z.array(caseStudySchema).default([]),
     certifications: z.array(certificationsSchema).default([]),
     languages: z.array(languageItemSchema).default([]),
 });

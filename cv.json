@@ -1,121 +1,265 @@
 {
   "profile": {
-    "name": "Alessio",
+    "name": "Alessio Iodice",
     "title": "Software Engineer",
-    "location": "Your city, Your country",
+    "location": "Turin, Italy",
     "website": "https://iodicealessio.github.io/",
     "avatar": "/avatar.svg",
-    "bio": "Placeholder content — replace with real content in step 6. (This is example content from cv.example.json, adapted as scaffolding for the site.)",
+    "bio": "Software Engineer with 6 years of experience at Deloitte Digital, designing and building integrations for high-traffic B2C e-commerce platforms on Salesforce Commerce Cloud. I'm currently expanding beyond my usual stack, learning Python, FastAPI and Vue by building personal projects.",
+    "philosophy": "I'm interested in systems that stay correct under partial failure and remain simple to reason about years later — transactional boundaries, idempotency, graceful degradation when a dependency goes down. Most of my six years at Deloitte have been spent on the seams between systems: order pipelines, CRM synchronisation, payment webhooks, catalogue ingestion — the places where two systems disagree about what happened. Outside of work I'm using personal projects to push into stacks I don't touch professionally: Python and FastAPI, Vue, and most recently Astro and Zod for this site.",
+    "careerStartDate": "2019-10",
     "socials": [
       {
         "platform": "GitHub",
-        "url": "https://github.com",
-        "username": "example"
+        "url": "https://github.com/iodicealessio",
+        "username": "iodicealessio"
       },
       {
         "platform": "LinkedIn",
-        "url": "https://linkedin.com",
-        "username": "example"
+        "url": "https://www.linkedin.com/in/alessioiodice",
+        "username": "alessio-iodicea39199195"
       }
     ]
   },
   "experience": [
     {
-      "company": "Example Tech Ltd.",
-      "role": "Senior Fullstack Engineer",
-      "location": "Berlin, Germany",
-      "startDate": "2023-01",
+      "company": "Deloitte Digital",
+      "role": "Senior Consultant — Tech Lead",
+      "location": "Turin, Italy",
+      "startDate": "2023-12",
       "endDate": null,
       "current": true,
-      "description": "Leading the core web development team building high-performance web applications and design systems.",
+      "description": "Technical lead on B2C e-commerce projects across the retail, home appliances and automotive sectors, built on Salesforce Commerce Cloud with Node.js and React.js.",
       "highlights": [
-        "Architected scalable frontend components using Astro and TypeScript",
-        "Improved website loading performance and Core Web Vitals by 40%",
-        "Mentored junior developers and established automated testing pipelines"
+        "Designed and implemented the order export flow to the OMS using a transactional outbox pattern, decoupling order capture from downstream delivery and guaranteeing eventual consistency under partial failure",
+        "Built CRM synchronisation as a dual-write with asynchronous reconciliation and a read-through cache, with explicit graceful degradation so checkout remains available when the external service is unreachable",
+        "Implemented payment gateway webhook handling with ack-on-receipt semantics to prevent head-of-line blocking, and specified the target asynchronous architecture with a dead-letter queue for failed events",
+        "Built batch ingestion pipelines for product catalogue data (PIM) via timestamped XML feeds, with validation and retry handling",
+        "Designed and troubleshot a layered CDN architecture (client-managed CDN in front of the platform CDN), including diagnosis of cache-related content visibility issues",
+        "Acted as the main technical point of contact with client architects and third-party vendors on integration design and failure-handling strategy",
+        "Mentored junior engineers, reviewed code and supported their technical growth"
       ],
-      "technologies": ["Astro", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL"]
+      "technologies": ["Salesforce Commerce Cloud", "Node.js", "React.js", "JavaScript", "REST APIs", "Webhooks", "Adyen", "Stripe"]
     },
     {
-      "company": "Sample Solutions Inc.",
-      "role": "Frontend Developer",
-      "location": "Munich, Germany",
-      "startDate": "2020-03",
-      "endDate": "2022-12",
+      "company": "Deloitte Digital",
+      "role": "Consultant",
+      "location": "Milan, Italy",
+      "startDate": "2021-12",
+      "endDate": "2023-11",
       "current": false,
-      "description": "Built responsive web applications and interactive client portals.",
+      "description": "Developed and maintained integrations and custom commerce features on Salesforce Commerce Cloud for enterprise B2C clients.",
       "highlights": [
-        "Implemented accessible (WCAG 2.1 AA compliant) UI components",
-        "Integrated REST and GraphQL APIs"
+        "Took increasing ownership of technical design decisions and of the delivery of assigned workstreams",
+        "Built integrations with external systems including IAM, CRM, ERP and OMS"
       ],
-      "technologies": ["React", "TypeScript", "GraphQL", "CSS3"]
+      "technologies": ["Salesforce Commerce Cloud", "Node.js", "JavaScript", "REST APIs"]
+    },
+    {
+      "company": "Deloitte Digital",
+      "role": "Analyst",
+      "location": "Milan, Italy",
+      "startDate": "2020-02",
+      "endDate": "2021-11",
+      "current": false,
+      "description": "Contributed to front-end and back-end development on B2C commerce projects, building platform expertise in Salesforce Commerce Cloud.",
+      "highlights": [
+        "Earned the Salesforce B2C Commerce Developer certification",
+        "Developed custom storefront features and supported integration work"
+      ],
+      "technologies": ["Salesforce Commerce Cloud", "JavaScript", "HTML", "CSS"]
+    },
+    {
+      "company": "SmartUp Engineering",
+      "role": "Full Stack Software Engineer",
+      "location": "Naples, Italy",
+      "startDate": "2019-10",
+      "endDate": "2020-01",
+      "current": false,
+      "description": "Improved the user interface of JPAD (Java toolchain of Programs for Aircraft Design).",
+      "highlights": [
+        "Designed a data-driven UI system that generates form fields automatically from the structure and data types of XML input files",
+        "Enabled parameter preloading and customisation across diverse aircraft configurations"
+      ],
+      "technologies": ["Java", "JavaFX", "JFoenix", "XML", "Git", "Gradle"]
+    },
+    {
+      "company": "Università degli Studi di Napoli Federico II",
+      "role": "Student Internship",
+      "location": "Naples, Italy",
+      "startDate": "2019-06",
+      "endDate": "2019-09",
+      "current": false,
+      "description": "Performance analysis and optimisation of the JPAD aircraft design system.",
+      "highlights": [
+        "Profiled the system to identify computational bottlenecks in aircraft analysis routines",
+        "Introduced parallelisation to heavy processing paths, reducing execution time for analyses and plot generation"
+      ],
+      "technologies": ["Java", "VisualVM", "Git", "Gradle"]
+    },
+    {
+      "company": "Young Minds Academy",
+      "role": "Full Stack Software Engineer",
+      "location": "Naples, Italy",
+      "startDate": "2019-05",
+      "endDate": "2019-07",
+      "current": false,
+      "description": "Built an eLearning platform supporting assessments and course material delivery.",
+      "highlights": [
+        "Implemented configurable test rules, user profile management and statistical reporting on test performance"
+      ],
+      "technologies": ["PHP", "Symfony", "PostgreSQL", "HTML", "CSS", "SVN"]
+    },
+    {
+      "company": "IPE — Istituto per Ricerche ed Attività Educative",
+      "role": "Full Stack Software Engineer",
+      "location": "Naples, Italy",
+      "startDate": "2019-03",
+      "endDate": "2019-07",
+      "current": false,
+      "description": "Developed a CRM handling applicant registration for the institute's open calls.",
+      "highlights": [
+        "Built registration and applicant management flows from requirements to delivery"
+      ],
+      "technologies": ["PHP", "Symfony", "MySQL", "HTML", "CSS", "SVN"]
+    },
+    {
+      "company": "Freelance",
+      "role": "Web Developer",
+      "location": "Naples, Italy",
+      "startDate": "2016-01",
+      "endDate": "2019-01",
+      "current": false,
+      "description": "Delivered web development projects for small business clients.",
+      "highlights": [
+        "Handled requirements gathering, implementation and delivery end to end"
+      ],
+      "technologies": ["PHP", "JavaScript", "HTML", "CSS", "MySQL"]
     }
   ],
   "education": [
     {
-      "institution": "Example University of Science",
-      "degree": "Master of Science",
-      "fieldOfStudy": "Computer Science",
-      "startDate": "2017-10",
-      "endDate": "2019-12",
-      "location": "Berlin, Germany",
-      "highlights": [
-        "Specialization in Distributed Systems and Software Architecture",
-        "Master Thesis on Web Framework Performance"
-      ]
-    },
-    {
-      "institution": "Example University of Applied Sciences",
+      "institution": "Università degli Studi di Napoli Federico II",
       "degree": "Bachelor of Science",
-      "fieldOfStudy": "Media Informatics",
-      "startDate": "2014-09",
-      "endDate": "2017-08",
-      "location": "Hamburg, Germany",
+      "fieldOfStudy": "Computer Science",
+      "startDate": "2013-09",
+      "endDate": "2019-07",
+      "location": "Naples, Italy",
       "highlights": [
-        "Graduated with honors"
+        "Final grade: 97/110",
+        "Thesis on the optimisation of a tool for aeronautical project analysis, introducing parallelisation and performance profiling (VisualVM)"
       ]
     }
   ],
   "skills": [
     {
+      "category": "Distributed Systems & Integration Patterns",
+      "skills": ["Transactional Outbox", "Dual-Write & Reconciliation", "Idempotency", "At-Least-Once Delivery", "Graceful Degradation", "Eventual Consistency", "Read-Through Cache", "Webhook Handling", "Batch Ingestion Pipelines"]
+    },
+    {
       "category": "Languages & Core",
-      "skills": ["TypeScript", "JavaScript", "HTML5", "CSS3", "SQL"]
+      "skills": ["JavaScript", "Java", "PHP", "Python", "SQL", "PL/SQL", "HTML5", "CSS3"]
     },
     {
       "category": "Frameworks & Libraries",
-      "skills": ["Astro", "React", "Next.js", "Node.js", "Express", "Zod"]
+      "skills": ["Node.js", "React.js", "Vue.js", "Astro", "FastAPI", "Symfony", "JavaFX"]
+    },
+    {
+      "category": "Platforms & Integrations",
+      "skills": ["Salesforce Commerce Cloud (SFCC) B2C", "Headless Commerce", "IAM", "CRM", "ERP", "OMS", "Adyen", "Stripe", "REST APIs", "CDN architecture"]
+    },
+    {
+      "category": "Databases",
+      "skills": ["PostgreSQL", "MySQL", "Oracle (PL/SQL)"]
     },
     {
       "category": "Tools & Infrastructure",
-      "skills": ["Git", "Docker", "Vite", "CI/CD (GitHub Actions)"]
+      "skills": ["Git", "GitHub Actions", "Gradle", "SVN", "WebDAV", "AWS (learning)"]
     }
   ],
+  "currentlyExploring": ["Astro", "Zod", "FastAPI", "Vue", "Python"],
   "projects": [
     {
-      "title": "dotcv Example Project",
-      "description": "An open-source resume and portfolio generator powered by Astro with automatic ATS-friendly PDF exports.",
-      "url": "https://github.com/example/dotcv",
-      "technologies": ["Astro", "TypeScript", "Zod"],
+      "title": "Personal Portfolio & CV Site",
+      "description": "Static portfolio and CV site built with Astro, driven by a single structured cv.json validated with Zod, with an ATS-friendly print route for PDF export.",
+      "url": "https://iodicealessio.github.io/",
+      "technologies": ["Astro", "TypeScript", "Zod", "GitHub Actions", "GitHub Pages"],
       "highlights": [
-        "Format-agnostic parsing (JSON, YAML, XML)",
-        "Zero-config PDF generation and theme system"
+        "Single source of truth: all content driven by a schema-validated cv.json",
+        "ATS-friendly print route generating a PDF via the browser print pipeline",
+        "Automated build and deploy through GitHub Actions"
+      ],
+      "status": "Live",
+      "roadmap": []
+    },
+    {
+      "title": "Recipe Manager",
+      "description": "Full-stack recipe management application built as a personal project, used as a testbed for backend patterns and cloud deployment.",
+      "url": "https://github.com/iodicealessio",
+      "technologies": ["Python", "FastAPI", "Vue.js", "PostgreSQL"],
+      "highlights": [
+        "REST API built with FastAPI, with a Vue.js single-page frontend",
+        "Used as the deployment target for hands-on AWS experience"
+      ],
+      "status": "Work in progress",
+      "roadmap": [
+        { "label": "Recipe CRUD", "done": true },
+        { "label": "API", "done": true },
+        { "label": "Frontend", "done": true },
+        { "label": "Authentication", "done": false },
+        { "label": "Search", "done": false },
+        { "label": "Recipe import", "done": false },
+        { "label": "Deployment", "done": false }
       ]
+    }
+  ],
+  "caseStudies": [
+    {
+      "title": "Decoupling order capture from a flaky OMS",
+      "context": "A B2C commerce platform on Salesforce Commerce Cloud needed to export every placed order to a downstream Order Management System for fulfilment.",
+      "problem": "Calling the OMS synchronously during checkout meant that any slowness or downtime on the OMS side directly threatened the checkout flow itself — the two systems' availability was coupled when it shouldn't have been.",
+      "approach": "Rather than calling the OMS inline, order export was modelled as a transactional outbox: the order and an export record are written in the same transaction, and a separate process delivers export records to the OMS asynchronously, retrying independently of checkout.",
+      "decisions": "The outbox pattern was chosen specifically to decouple order capture from delivery, so a slow or unavailable OMS can never block or fail a checkout — the trade-off accepted was eventual, not immediate, consistency between the storefront and the OMS.",
+      "result": "Order capture and OMS delivery became independently reliable: checkout no longer depends on OMS availability, and the system guarantees eventual consistency even under partial failure of the downstream service.",
+      "lessonsLearned": "Decoupling the write from the delivery is often more valuable than making the delivery itself faster — it changes what can fail without taking checkout down with it.",
+      "technologies": ["Salesforce Commerce Cloud", "Node.js", "REST APIs"]
+    },
+    {
+      "title": "Keeping checkout alive when the CRM isn't",
+      "context": "Customer profile data needed to stay synchronised between the commerce platform and an external CRM, and be available fast enough to use during checkout.",
+      "problem": "A synchronous, single-write dependency on the CRM meant that any CRM slowness or outage risked degrading or breaking checkout for every customer, even though CRM data wasn't strictly required to complete a purchase.",
+      "approach": "CRM synchronisation was implemented as a dual-write with asynchronous reconciliation, backed by a read-through cache so checkout reads served from cache rather than calling the CRM directly on every request.",
+      "decisions": "Explicit graceful degradation was built in: if the CRM is unreachable, checkout falls back to cached or default behaviour instead of failing, trading short-term data freshness for availability of the critical path.",
+      "result": "Checkout remains available during CRM outages or slowdowns, with reconciliation catching up the two systems asynchronously once the CRM recovers.",
+      "lessonsLearned": "Not every dependency deserves the same availability guarantee as the path it sits next to — deciding what checkout can survive without was as important as the integration code itself.",
+      "technologies": ["Salesforce Commerce Cloud", "Node.js", "CRM", "Caching"]
+    },
+    {
+      "title": "Webhooks without head-of-line blocking",
+      "context": "Payment gateways (Adyen, Stripe) notify the platform of payment events via webhooks, which need to be processed reliably without missing or misordering critical state changes.",
+      "problem": "Processing each webhook fully inline, in the request that receives it, risks head-of-line blocking: a slow or failing handler for one event delays or drops the processing of the events queued behind it.",
+      "approach": "Webhook handling was implemented with ack-on-receipt semantics — the endpoint acknowledges receipt immediately and hands the event off for processing separately, so the gateway is never kept waiting on internal processing time.",
+      "decisions": "The target architecture specified an asynchronous processing pipeline with a dead-letter queue for events that fail processing, so failures are isolated and retryable instead of blocking the stream of incoming events.",
+      "result": "Webhook ingestion no longer risks blocking on slow downstream processing, and failed events are captured in a dead-letter queue rather than silently lost or retried inline.",
+      "lessonsLearned": "Acknowledging receipt and processing are two different responsibilities with two different reliability requirements — conflating them into one synchronous step is what causes head-of-line blocking in the first place.",
+      "technologies": ["Webhooks", "Adyen", "Stripe", "Node.js"]
     }
   ],
   "certifications": [
     {
-      "title": "Example Cloud Certification",
-      "issuer": "Cloud Provider",
-      "date": "2023-05",
-      "url": "https://example.com/cert/123"
+      "title": "Salesforce B2C Commerce Developer",
+      "issuer": "Salesforce",
+      "date": "2021-01",
+      "url": "https://trailhead.salesforce.com/credentials"
     }
   ],
   "languages": [
     {
-      "language": "English",
-      "fluency": "Fluent / Native"
+      "language": "Italian",
+      "fluency": "Native"
     },
     {
-      "language": "German",
+      "language": "English",
       "fluency": "Professional Working Proficiency"
     }
   ]

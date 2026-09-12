@@ -1,0 +1,92 @@
+---
+import { loadData } from "@/lib/parser";
+
+const cv = await loadData();
+const currentRole = cv.experience.find((item) => item.current) ?? cv.experience[0];
+---
+
+<section
+  id="selected-work"
+  class="py-12 border-t border-[#ffffff10] text-[var(--white)]"
+>
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">What I actually build</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-6">Selected Work</h3>
+    <p class="text-[var(--white-icon)] max-w-2xl mb-8">
+      Most of my professional work has been on private enterprise codebases,
+      so I can't share a public repo — but I can describe the shape of the
+      problems and how I've approached them.
+    </p>
+
+    {
+      currentRole && (
+        <article class="rounded-2xl border border-[var(--white-icon-tr)] bg-[#1414149c] p-6 mb-6">
+          <h4 class="text-2xl font-semibold">Enterprise E-commerce Platform</h4>
+          <p class="text-[var(--sec)] text-sm mb-3">
+            {currentRole.company} · Salesforce Commerce Cloud
+          </p>
+          {currentRole.description && (
+            <p class="text-[var(--white-icon)]">{currentRole.description}</p>
+          )}
+          {currentRole.technologies.length > 0 && (
+            <div class="mt-4 flex flex-wrap gap-2">
+              {currentRole.technologies.map((tech) => (
+                <span class="text-xs px-2.5 py-1 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)]">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+        </article>
+      )
+    }
+
+    <h4 class="text-xl font-semibold mt-10 mb-4">Technical Case Studies</h4>
+    <div class="flex flex-col gap-6">
+      {
+        cv.caseStudies.map((study) => (
+          <article class="rounded-2xl border border-[var(--white-icon-tr)] bg-[#1414149c] p-6">
+            <h5 class="text-xl font-semibold mb-4">{study.title}</h5>
+            <div class="flex flex-col gap-3 text-sm">
+              <div>
+                <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Context</p>
+                <p class="text-[var(--white-icon)]">{study.context}</p>
+              </div>
+              <div>
+                <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Problem</p>
+                <p class="text-[var(--white-icon)]">{study.problem}</p>
+              </div>
+              <div>
+                <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Approach</p>
+                <p class="text-[var(--white-icon)]">{study.approach}</p>
+              </div>
+              <div>
+                <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Technical decisions</p>
+                <p class="text-[var(--white-icon)]">{study.decisions}</p>
+              </div>
+              <div>
+                <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Result</p>
+                <p class="text-[var(--white-icon)]">{study.result}</p>
+              </div>
+              {study.lessonsLearned && (
+                <div>
+                  <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Lessons learned</p>
+                  <p class="text-[var(--white-icon)]">{study.lessonsLearned}</p>
+                </div>
+              )}
+            </div>
+            {study.technologies.length > 0 && (
+              <div class="mt-4 flex flex-wrap gap-2">
+                {study.technologies.map((tech) => (
+                  <span class="text-xs px-2.5 py-1 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)]">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
