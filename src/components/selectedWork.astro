@@ -28,15 +28,6 @@ const currentRole = cv.experience.find((item) => item.current) ?? cv.experience[
           {currentRole.description && (
             <p class="text-[var(--white-icon)]">{currentRole.description}</p>
           )}
-          {currentRole.technologies.length > 0 && (
-            <div class="mt-4 flex flex-wrap gap-2">
-              {currentRole.technologies.map((tech) => (
-                <span class="text-xs px-2.5 py-1 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)]">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          )}
         </article>
       )
     }
