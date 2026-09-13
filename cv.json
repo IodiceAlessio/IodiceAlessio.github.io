@@ -5,7 +5,7 @@
     "location": "Turin, Italy",
     "website": "https://iodicealessio.github.io/",
     "avatar": "/avatar.svg",
-    "bio": "Software Engineer with 6 years of experience at Deloitte Digital, designing and building integrations for high-traffic B2C e-commerce platforms on Salesforce Commerce Cloud. I'm currently expanding beyond my usual stack, learning Python, FastAPI and Vue by building personal projects.",
+    "bio": "Software Engineer with 6+ years of experience building enterprise e-commerce systems, currently Senior Consultant and Tech Lead at Deloitte Digital. I design and build integrations between high-traffic B2C commerce platforms and the surrounding enterprise landscape. I'm currently broadening my stack through personal projects with Python, FastAPI and Vue.",
     "philosophy": "I'm interested in systems that stay correct under partial failure and remain simple to reason about years later — transactional boundaries, idempotency, graceful degradation when a dependency goes down. Most of my six years at Deloitte have been spent on the seams between systems: order pipelines, CRM synchronisation, payment webhooks, catalogue ingestion — the places where two systems disagree about what happened. Outside of work I'm using personal projects to push into stacks I don't touch professionally: Python and FastAPI, Vue, and most recently Astro and Zod for this site.",
     "careerStartDate": "2019-10",
     "socials": [
@@ -17,7 +17,7 @@
       {
         "platform": "LinkedIn",
         "url": "https://www.linkedin.com/in/alessioiodice",
-        "username": "alessio-iodicea39199195"
+        "username": "alessioiodice"
       }
     ]
   },
@@ -158,15 +158,15 @@
     },
     {
       "category": "Languages & Core",
-      "skills": ["JavaScript", "Java", "PHP", "Python", "SQL", "PL/SQL", "HTML5", "CSS3"]
+      "skills": ["JavaScript", "Java", "PHP", "SQL", "PL/SQL", "HTML5", "CSS3"]
     },
     {
       "category": "Frameworks & Libraries",
-      "skills": ["Node.js", "React.js", "Vue.js", "Astro", "FastAPI", "Symfony", "JavaFX"]
+      "skills": ["Node.js", "Express.js", "React.js", "Symfony", "JavaFX"]
     },
     {
       "category": "Platforms & Integrations",
-      "skills": ["Salesforce Commerce Cloud (SFCC) B2C", "Headless Commerce", "IAM", "CRM", "ERP", "OMS", "Adyen", "Stripe", "REST APIs", "CDN architecture"]
+      "skills": ["Salesforce Commerce Cloud (SFCC) B2C", "Headless Commerce", "IAM", "CRM", "ERP", "OMS", "Adyen", "Stripe", "REST APIs"]
     },
     {
       "category": "Databases",
@@ -174,15 +174,15 @@
     },
     {
       "category": "Tools & Infrastructure",
-      "skills": ["Git", "GitHub Actions", "Gradle", "SVN", "WebDAV", "AWS (learning)"]
+      "skills": ["Git", "GitHub Actions", "Gradle", "SVN", "WebDAV"]
     }
   ],
-  "currentlyExploring": ["Astro", "Zod", "FastAPI", "Vue", "Python"],
+  "currentlyExploring": ["Astro", "Zod", "Python", "FastAPI", "Vue", "AWS"],
   "projects": [
     {
       "title": "Personal Portfolio & CV Site",
       "description": "Static portfolio and CV site built with Astro, driven by a single structured cv.json validated with Zod, with an ATS-friendly print route for PDF export.",
-      "url": "https://iodicealessio.github.io/",
+      "url": "https://github.com/IodiceAlessio/IodiceAlessio.github.io",
       "technologies": ["Astro", "TypeScript", "Zod", "GitHub Actions", "GitHub Pages"],
       "highlights": [
         "Single source of truth: all content driven by a schema-validated cv.json",
@@ -198,8 +198,7 @@
       "url": "https://github.com/iodicealessio",
       "technologies": ["Python", "FastAPI", "Vue.js", "PostgreSQL"],
       "highlights": [
-        "REST API built with FastAPI, with a Vue.js single-page frontend",
-        "Used as the deployment target for hands-on AWS experience"
+        "REST API built with FastAPI, with a Vue.js single-page frontend"
       ],
       "status": "Work in progress",
       "roadmap": [
@@ -216,41 +215,41 @@
   "caseStudies": [
     {
       "title": "Decoupling order capture from a flaky OMS",
+      "shortTitle": "Order capture & OMS",
       "context": "A B2C commerce platform on Salesforce Commerce Cloud needed to export every placed order to a downstream Order Management System for fulfilment.",
       "problem": "Calling the OMS synchronously during checkout meant that any slowness or downtime on the OMS side directly threatened the checkout flow itself — the two systems' availability was coupled when it shouldn't have been.",
       "approach": "Rather than calling the OMS inline, order export was modelled as a transactional outbox: the order and an export record are written in the same transaction, and a separate process delivers export records to the OMS asynchronously, retrying independently of checkout.",
       "decisions": "The outbox pattern was chosen specifically to decouple order capture from delivery, so a slow or unavailable OMS can never block or fail a checkout — the trade-off accepted was eventual, not immediate, consistency between the storefront and the OMS.",
       "result": "Order capture and OMS delivery became independently reliable: checkout no longer depends on OMS availability, and the system guarantees eventual consistency even under partial failure of the downstream service.",
-      "lessonsLearned": "Decoupling the write from the delivery is often more valuable than making the delivery itself faster — it changes what can fail without taking checkout down with it.",
-      "technologies": ["Salesforce Commerce Cloud", "Node.js", "REST APIs"]
+      "lessonsLearned": "Decoupling the write from the delivery is often more valuable than making the delivery itself faster — it changes what can fail without taking checkout down with it."
     },
     {
       "title": "Keeping checkout alive when the CRM isn't",
+      "shortTitle": "Checkout & CRM",
       "context": "Customer profile data needed to stay synchronised between the commerce platform and an external CRM, and be available fast enough to use during checkout.",
       "problem": "A synchronous, single-write dependency on the CRM meant that any CRM slowness or outage risked degrading or breaking checkout for every customer, even though CRM data wasn't strictly required to complete a purchase.",
       "approach": "CRM synchronisation was implemented as a dual-write with asynchronous reconciliation, backed by a read-through cache so checkout reads served from cache rather than calling the CRM directly on every request.",
       "decisions": "Explicit graceful degradation was built in: if the CRM is unreachable, checkout falls back to cached or default behaviour instead of failing, trading short-term data freshness for availability of the critical path.",
       "result": "Checkout remains available during CRM outages or slowdowns, with reconciliation catching up the two systems asynchronously once the CRM recovers.",
-      "lessonsLearned": "Not every dependency deserves the same availability guarantee as the path it sits next to — deciding what checkout can survive without was as important as the integration code itself.",
-      "technologies": ["Salesforce Commerce Cloud", "Node.js", "CRM", "Caching"]
+      "lessonsLearned": "Not every dependency deserves the same availability guarantee as the path it sits next to — deciding what checkout can survive without was as important as the integration code itself."
     },
     {
       "title": "Webhooks without head-of-line blocking",
+      "shortTitle": "Webhooks & DLQ",
       "context": "Payment gateways (Adyen, Stripe) notify the platform of payment events via webhooks, which need to be processed reliably without missing or misordering critical state changes.",
       "problem": "Processing each webhook fully inline, in the request that receives it, risks head-of-line blocking: a slow or failing handler for one event delays or drops the processing of the events queued behind it.",
       "approach": "Webhook handling was implemented with ack-on-receipt semantics — the endpoint acknowledges receipt immediately and hands the event off for processing separately, so the gateway is never kept waiting on internal processing time.",
       "decisions": "The target architecture specified an asynchronous processing pipeline with a dead-letter queue for events that fail processing, so failures are isolated and retryable instead of blocking the stream of incoming events.",
       "result": "Webhook ingestion no longer risks blocking on slow downstream processing, and failed events are captured in a dead-letter queue rather than silently lost or retried inline.",
-      "lessonsLearned": "Acknowledging receipt and processing are two different responsibilities with two different reliability requirements — conflating them into one synchronous step is what causes head-of-line blocking in the first place.",
-      "technologies": ["Webhooks", "Adyen", "Stripe", "Node.js"]
+      "lessonsLearned": "Acknowledging receipt and processing are two different responsibilities with two different reliability requirements — conflating them into one synchronous step is what causes head-of-line blocking in the first place."
     }
   ],
   "certifications": [
     {
-      "title": "Salesforce B2C Commerce Developer",
+      "title": "Salesforce Certified B2C Commerce Developer",
       "issuer": "Salesforce",
       "date": "2021-01",
-      "url": "https://trailhead.salesforce.com/credentials"
+      "url": "https://www.salesforce.com/trailblazer/aiodice2"
     }
   ],
   "languages": [
