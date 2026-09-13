@@ -215,6 +215,7 @@
   "caseStudies": [
     {
       "title": "Decoupling order capture from a flaky OMS",
+      "shortTitle": "Order capture & OMS",
       "context": "A B2C commerce platform on Salesforce Commerce Cloud needed to export every placed order to a downstream Order Management System for fulfilment.",
       "problem": "Calling the OMS synchronously during checkout meant that any slowness or downtime on the OMS side directly threatened the checkout flow itself — the two systems' availability was coupled when it shouldn't have been.",
       "approach": "Rather than calling the OMS inline, order export was modelled as a transactional outbox: the order and an export record are written in the same transaction, and a separate process delivers export records to the OMS asynchronously, retrying independently of checkout.",
@@ -224,6 +225,7 @@
     },
     {
       "title": "Keeping checkout alive when the CRM isn't",
+      "shortTitle": "Checkout & CRM",
       "context": "Customer profile data needed to stay synchronised between the commerce platform and an external CRM, and be available fast enough to use during checkout.",
       "problem": "A synchronous, single-write dependency on the CRM meant that any CRM slowness or outage risked degrading or breaking checkout for every customer, even though CRM data wasn't strictly required to complete a purchase.",
       "approach": "CRM synchronisation was implemented as a dual-write with asynchronous reconciliation, backed by a read-through cache so checkout reads served from cache rather than calling the CRM directly on every request.",
@@ -233,6 +235,7 @@
     },
     {
       "title": "Webhooks without head-of-line blocking",
+      "shortTitle": "Webhooks & DLQ",
       "context": "Payment gateways (Adyen, Stripe) notify the platform of payment events via webhooks, which need to be processed reliably without missing or misordering critical state changes.",
       "problem": "Processing each webhook fully inline, in the request that receives it, risks head-of-line blocking: a slow or failing handler for one event delays or drops the processing of the events queued behind it.",
       "approach": "Webhook handling was implemented with ack-on-receipt semantics — the endpoint acknowledges receipt immediately and hands the event off for processing separately, so the gateway is never kept waiting on internal processing time.",

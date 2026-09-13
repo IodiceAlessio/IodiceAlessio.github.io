@@ -64,6 +64,7 @@ export const projectItemSchema = z.object({
 
 export const caseStudySchema = z.object({
     title: z.string(),
+    shortTitle: z.string().optional(), // short label for tab navigation, falls back to title
     context: z.string(),
     problem: z.string(),
     approach: z.string(),

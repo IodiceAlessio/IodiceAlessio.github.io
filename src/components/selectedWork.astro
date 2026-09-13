@@ -33,51 +33,150 @@ const currentRole = cv.experience.find((item) => item.current) ?? cv.experience[
     }
 
     <h4 class="text-xl font-semibold mt-10 mb-4">Technical Case Studies</h4>
-    <div class="flex flex-col gap-6">
+
+    <div
+      class="cs-tabs flex gap-1 border-b border-[var(--white-icon-tr)] mb-6 overflow-x-auto"
+      role="tablist"
+    >
       {
-        cv.caseStudies.map((study) => (
-          <article class="rounded-2xl border border-[var(--white-icon-tr)] bg-[#1414149c] p-6">
-            <h5 class="text-xl font-semibold mb-4">{study.title}</h5>
-            <div class="flex flex-col gap-3 text-sm">
-              <div>
-                <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Context</p>
-                <p class="text-[var(--white-icon)]">{study.context}</p>
-              </div>
-              <div>
-                <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Problem</p>
-                <p class="text-[var(--white-icon)]">{study.problem}</p>
-              </div>
-              <div>
-                <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Approach</p>
-                <p class="text-[var(--white-icon)]">{study.approach}</p>
-              </div>
-              <div>
-                <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Technical decisions</p>
-                <p class="text-[var(--white-icon)]">{study.decisions}</p>
-              </div>
-              <div>
-                <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Result</p>
-                <p class="text-[var(--white-icon)]">{study.result}</p>
-              </div>
-              {study.lessonsLearned && (
-                <div>
-                  <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Lessons learned</p>
-                  <p class="text-[var(--white-icon)]">{study.lessonsLearned}</p>
-                </div>
-              )}
-            </div>
-            {study.technologies.length > 0 && (
-              <div class="mt-4 flex flex-wrap gap-2">
-                {study.technologies.map((tech) => (
-                  <span class="text-xs px-2.5 py-1 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)]">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            )}
-          </article>
+        cv.caseStudies.map((study, index) => (
+          <button
+            type="button"
+            role="tab"
+            id={`cs-tab-${index}`}
+            aria-selected={index === 0 ? "true" : "false"}
+            aria-controls={`cs-panel-${index}`}
+            data-tab={index}
+            class:list={[
+              "cs-tab text-sm text-[var(--white-icon)] hover:text-white bg-transparent border-0 border-b-2 border-transparent px-1 pb-3 mr-6 whitespace-nowrap transition-colors",
+              index === 0 && "cs-tab-active",
+            ]}
+          >
+            <span class="text-[var(--sec)] font-mono text-xs mr-1.5">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            {study.shortTitle ?? study.title}
+          </button>
         ))
       }
     </div>
+
+    {
+      cv.caseStudies.map((study, index) => (
+        <article
+          id={`cs-panel-${index}`}
+          role="tabpanel"
+          aria-labelledby={`cs-tab-${index}`}
+          data-panel={index}
+          class:list={[
+            "cs-panel rounded-2xl border border-[var(--white-icon-tr)] bg-[#1414149c] p-6",
+            index !== 0 && "hidden",
+          ]}
+        >
+          <h5 class="text-xl font-semibold mb-4">{study.title}</h5>
+          <div class="flex flex-col gap-3 text-sm">
+            <div>
+              <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Context</p>
+              <p class="text-[var(--white-icon)]">{study.context}</p>
+            </div>
+            <div>
+              <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Problem</p>
+              <p class="text-[var(--white-icon)]">{study.problem}</p>
+            </div>
+            <div>
+              <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Approach</p>
+              <p class="text-[var(--white-icon)]">{study.approach}</p>
+            </div>
+            <div>
+              <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Technical decisions</p>
+              <p class="text-[var(--white-icon)]">{study.decisions}</p>
+            </div>
+            <div>
+              <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Result</p>
+              <p class="text-[var(--white-icon)]">{study.result}</p>
+            </div>
+            {study.lessonsLearned && (
+              <div>
+                <p class="text-[var(--sec)] uppercase tracking-wide text-xs mb-1">Lessons learned</p>
+                <p class="text-[var(--white-icon)]">{study.lessonsLearned}</p>
+              </div>
+            )}
+          </div>
+          {study.technologies.length > 0 && (
+            <div class="mt-4 flex flex-wrap gap-2">
+              {study.technologies.map((tech) => (
+                <span class="text-xs px-2.5 py-1 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)]">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+        </article>
+      ))
+    }
   </div>
 </section>
+
+<style>
+  .cs-tabs {
+    scrollbar-width: none;
+  }
+
+  .cs-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cs-tab.cs-tab-active {
+    color: #fff;
+    border-bottom-color: var(--sec);
+  }
+
+  @keyframes cs-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .cs-panel.cs-fade-in {
+    animation: cs-fade-in 0.3s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cs-panel.cs-fade-in {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>(
+    "#selected-work .cs-tab"
+  );
+  const panels = document.querySelectorAll<HTMLElement>(
+    "#selected-work .cs-panel"
+  );
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const target = tab.dataset.tab;
+      if (tab.classList.contains("cs-tab-active")) return;
+
+      tabs.forEach((t) => {
+        const isActive = t === tab;
+        t.classList.toggle("cs-tab-active", isActive);
+        t.setAttribute("aria-selected", String(isActive));
+      });
+
+      panels.forEach((panel) => {
+        const isTarget = panel.dataset.panel === target;
+        panel.classList.toggle("hidden", !isTarget);
+        panel.classList.toggle("cs-fade-in", isTarget);
+      });
+    });
+  });
+</script>
