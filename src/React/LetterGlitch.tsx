@@ -253,25 +253,36 @@ const LetterGlitch = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // This is a canvas loop, not a CSS animation, so
+    // prefers-reduced-motion has to be checked here: draw one static
+    // frame via resizeCanvas() and skip starting the animation loop.
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
     context.current = canvas.getContext("2d");
     resizeCanvas();
-    animate();
+    if (!prefersReducedMotion) {
+      animate();
+    }
 
     let resizeTimeout: ReturnType<typeof setTimeout>;
 
     const handleResize = () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
-        cancelAnimationFrame(animationRef.current as number);
+        if (animationRef.current) cancelAnimationFrame(animationRef.current);
         resizeCanvas();
-        animate();
+        if (!prefersReducedMotion) {
+          animate();
+        }
       }, 100);
     };
 
     window.addEventListener("resize", handleResize);
 
     return () => {
-      cancelAnimationFrame(animationRef.current!);
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
       window.removeEventListener("resize", handleResize);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -46,6 +46,7 @@ const currentRole = cv.experience.find((item) => item.current) ?? cv.experience[
             id={`cs-tab-${index}`}
             aria-selected={index === 0 ? "true" : "false"}
             aria-controls={`cs-panel-${index}`}
+            tabindex={index === 0 ? "0" : "-1"}
             data-tab={index}
             class:list={[
               "cs-tab text-sm text-[var(--white-icon)] hover:text-white bg-transparent border-0 border-b-2 border-transparent px-1 pb-3 mr-6 whitespace-nowrap transition-colors",
@@ -67,6 +68,7 @@ const currentRole = cv.experience.find((item) => item.current) ?? cv.experience[
           id={`cs-panel-${index}`}
           role="tabpanel"
           aria-labelledby={`cs-tab-${index}`}
+          tabindex="0"
           data-panel={index}
           class:list={[
             "cs-panel rounded-2xl border border-[var(--white-icon-tr)] bg-[#1414149c] p-6",
@@ -154,29 +156,52 @@ const currentRole = cv.experience.find((item) => item.current) ?? cv.experience[
 </style>
 
 <script>
-  const tabs = document.querySelectorAll<HTMLButtonElement>(
-    "#selected-work .cs-tab"
+  const tabs = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("#selected-work .cs-tab")
   );
   const panels = document.querySelectorAll<HTMLElement>(
     "#selected-work .cs-panel"
   );
+  const tablist = document.querySelector<HTMLElement>(
+    "#selected-work .cs-tabs"
+  );
+
+  function activateTab(tab: HTMLButtonElement) {
+    const target = tab.dataset.tab;
+    if (tab.classList.contains("cs-tab-active")) return;
+
+    tabs.forEach((t) => {
+      const isActive = t === tab;
+      t.classList.toggle("cs-tab-active", isActive);
+      t.setAttribute("aria-selected", String(isActive));
+      t.setAttribute("tabindex", isActive ? "0" : "-1");
+    });
+
+    panels.forEach((panel) => {
+      const isTarget = panel.dataset.panel === target;
+      panel.classList.toggle("hidden", !isTarget);
+      panel.classList.toggle("cs-fade-in", isTarget);
+    });
+  }
 
   tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const target = tab.dataset.tab;
-      if (tab.classList.contains("cs-tab-active")) return;
+    tab.addEventListener("click", () => activateTab(tab));
+  });
 
-      tabs.forEach((t) => {
-        const isActive = t === tab;
-        t.classList.toggle("cs-tab-active", isActive);
-        t.setAttribute("aria-selected", String(isActive));
-      });
+  // Roving tabindex: arrow keys move focus between tabs and activate
+  // the one landed on, per the WAI-ARIA tabs pattern.
+  tablist?.addEventListener("keydown", (event) => {
+    const key = (event as KeyboardEvent).key;
+    const direction = key === "ArrowRight" ? 1 : key === "ArrowLeft" ? -1 : 0;
+    if (!direction) return;
 
-      panels.forEach((panel) => {
-        const isTarget = panel.dataset.panel === target;
-        panel.classList.toggle("hidden", !isTarget);
-        panel.classList.toggle("cs-fade-in", isTarget);
-      });
-    });
+    event.preventDefault();
+    const currentIndex = tabs.findIndex((t) =>
+      t.classList.contains("cs-tab-active")
+    );
+    const nextIndex = (currentIndex + direction + tabs.length) % tabs.length;
+    const nextTab = tabs[nextIndex];
+    nextTab.focus();
+    activateTab(nextTab);
   });
 </script>

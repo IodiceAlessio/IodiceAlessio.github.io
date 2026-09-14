@@ -1,19 +1,18 @@
 ---
 const technologies = [
-  {slug: "astro", label: "Astro"},
-  {slug: "vue", label: "Vue"},
-  {slug: "react", label: "React"},
-  {slug: "typeScript", label: "TypeScript"},
-  {slug: "tailwindcss", label: "TailwindCSS"},
-  {slug: "expressjs", label: "Express.js"},
+  {slug: "salesforce", label: "Salesforce"},
   {slug: "javaScript", label: "JavaScript"},
+  {slug: "expressjs", label: "Express.js"},
+  {slug: "react", label: "React"},
   {slug: "git", label: "Git"},
-  {slug: "mysql", label: "MySQL"},
   {slug: "bash", label: "Bash"},
+  {slug: "java", label: "Java"},
+  {slug: "mysql", label: "MySQL"},
   {slug: "php", label: "PHP"},
   {slug: "symfony", label: "Symfony"},
-  {slug: "java", label: "Java"},
-  {slug: "salesforce", label: "Salesforce"}
+  {slug: "astro", label: "Astro"},  
+  {slug: "typeScript", label: "TypeScript"},
+  {slug: "tailwindcss", label: "TailwindCSS"}  
 ]; 
 ---
 
@@ -62,6 +61,12 @@ const technologies = [
   @media (min-width: 768px) {
     .animate-scroll {
       animation-duration: 50s;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-scroll {
+      animation: none;
     }
   }
 </style>
