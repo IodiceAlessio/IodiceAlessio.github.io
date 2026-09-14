@@ -4,7 +4,6 @@
     "title": "Software Engineer",
     "location": "Turin, Italy",
     "website": "https://iodicealessio.github.io/",
-    "avatar": "/avatar.svg",
     "bio": "Software Engineer with 6+ years of experience building enterprise e-commerce systems, currently Senior Consultant and Tech Lead at Deloitte Digital. I design and build integrations between high-traffic B2C commerce platforms and the surrounding enterprise landscape. I'm currently broadening my stack through personal projects with Python, FastAPI and Vue.",
     "philosophy": "I'm interested in systems that stay correct under partial failure and remain simple to reason about years later — transactional boundaries, idempotency, graceful degradation when a dependency goes down. Most of my six years at Deloitte have been spent on the seams between systems: order pipelines, CRM synchronisation, payment webhooks, catalogue ingestion — the places where two systems disagree about what happened. Outside of work I'm using personal projects to push into stacks I don't touch professionally: Python and FastAPI, Vue, and most recently Astro and Zod for this site.",
     "careerStartDate": "2019-10",

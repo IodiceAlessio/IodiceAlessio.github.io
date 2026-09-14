@@ -34,21 +34,7 @@ const cv = await loadData();
                       {item.location && <span> • {item.location}</span>}
                     </p>
                   </div>
-                  {/*<span class="text-sm text-[var(--white-icon)] whitespace-nowrap">
-                    {item.startDate} – {item.endDate || "Present"}
-                  </span>*/}
                 </div>
-
-                {/*item.highlights.length > 0 && (
-                  <ul class="mt-3 space-y-1.5 text-sm text-[var(--white-icon)]">
-                    {item.highlights.map((hl) => (
-                      <li class="flex gap-2">
-                        <span class="text-[var(--sec)]">•</span>
-                        <span>{hl}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )*/}
               </article>
             ))}
           </div>
@@ -79,9 +65,6 @@ const cv = await loadData();
                     )}
                     <p class="text-[var(--white-icon)]">{cert.issuer}</p>
                   </div>
-                  {/*<span class="text-sm text-[var(--white-icon)] whitespace-nowrap">
-                    {cert.date}
-                  </span>*/}
                 </div>
               </article>
             ))}

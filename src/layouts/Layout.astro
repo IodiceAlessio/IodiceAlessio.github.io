@@ -3,7 +3,7 @@ import { loadData } from "@/lib/parser";
 
 const cv = await loadData();
 
-const siteUrl = cv.profile.website ?? "https://iodicealessio.github.io/";
+const siteUrl = Astro.site;
 const ogImage = new URL("/og.image.png", siteUrl).toString();
 
 const jsonLd = {
@@ -67,6 +67,12 @@ const jsonLd = {
     --white: #dfdfdf;
     --white-icon: #f3f3f398;
     --white-icon-tr: #f3f3f310;
+    --container: #1414149c;
+    --line: var(--sec);
+    /* Nav "scrolling" pill: stays translucent on purpose so the
+       backdrop-blur-xl already on the nav element remains visible —
+       don't raise the opacity here or the glass effect disappears. */
+    --component-bg: #10101027;
   }
 
   * {
@@ -102,7 +108,7 @@ const jsonLd = {
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--pink);
+    background: var(--sec);
   }
 
   /* Scrollbar styles for Firefox */
