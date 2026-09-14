@@ -1,20 +1,20 @@
 ---
 const technologies = [
-  "astro",
-  "vue",
-  "react",
-  "typeScript",
-  "tailwindcss",
-  "expressjs",
-  "javaScript",
-  "git",
-  "mysql",
-  "bash",
-  "PHP",
-  "symfony",
-  "java",
-  "salesforce",
-];
+  {slug: "astro", label: "Astro"},
+  {slug: "vue", label: "Vue"},
+  {slug: "react", label: "React"},
+  {slug: "typeScript", label: "TypeScript"},
+  {slug: "tailwindcss", label: "TailwindCSS"},
+  {slug: "expressjs", label: "Express.js"},
+  {slug: "javaScript", label: "JavaScript"},
+  {slug: "git", label: "Git"},
+  {slug: "mysql", label: "MySQL"},
+  {slug: "bash", label: "Bash"},
+  {slug: "php", label: "PHP"},
+  {slug: "symfony", label: "Symfony"},
+  {slug: "java", label: "Java"},
+  {slug: "salesforce", label: "Salesforce"}
+]; 
 ---
 
 <div class="relative overflow-x-hidden py-8">
@@ -29,8 +29,8 @@ const technologies = [
           aria-hidden={index >= technologies.length ? "true" : "false"}
         >
           <img
-            src={`/svg/${tech}.svg`}
-            alt={tech}
+            src={`/svg/${tech.slug}.svg`}
+            alt={tech.label}
             class="h-7 w-auto object-contain transition-transform group-hover:scale-110 opacity-60"
             width="30"
             height="30"
@@ -38,7 +38,7 @@ const technologies = [
             decoding="async"
           />
           <span class="text-lg font-medium text-[var(--white-icon)] whitespace-nowrap">
-            {tech.charAt(0).toUpperCase() + tech.slice(1)}
+            {tech.label}
           </span>
         </div>
       ))

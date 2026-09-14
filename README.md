@@ -12,6 +12,16 @@ This is my personal portfolio, built with Astro.
 
 Visit me @ [IodiceAlessio.github.io](https://IodiceAlessio.github.io/)
 
+## How it works
+
+`cv.json` is the single source of truth: every page (including the print
+routes) reads from it through a [Zod](https://zod.dev/) schema
+(`src/lib/cvSchema.ts`), so the data is validated at build time instead of
+trusted blindly. The ATS resume (`/print/ats`) renders the same data through
+a plain, print-optimized layout — no headless browser involved: a hidden
+`<iframe>` on the main page loads that route and calls the browser's own
+`print()`, so exporting a PDF costs zero extra dependencies.
+
 ## Technologies Used
 
 - [Astro](https://astro.build/)

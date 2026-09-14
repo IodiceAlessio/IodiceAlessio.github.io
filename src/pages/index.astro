@@ -23,7 +23,8 @@ import Footer from "@/components/footer.astro";
   <Footer />
 
   <script>
-    function triggerPdfPrint(printUrl = "/print/ats") {
+    function triggerAtsPrint() {
+      const printUrl = "/print/ats";
       let iframe = document.getElementById(
         "cv-hidden-print-frame"
       ) as HTMLIFrameElement | null;
@@ -63,9 +64,7 @@ import Footer from "@/components/footer.astro";
       );
       if (target) {
         event.preventDefault();
-        const type = target.getAttribute("data-print-pdf");
-        const printUrl = type === "design" ? "/print/design" : "/print/ats";
-        triggerPdfPrint(printUrl);
+        triggerAtsPrint();
       }
     });
   </script>

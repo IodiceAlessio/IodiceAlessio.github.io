@@ -13,7 +13,6 @@ export const profileSchema = z.object ({
     phone: z.string().optional(),
     location: z.string().optional(), // City, Country
     website: z.url().optional(), // Personal website
-    avatar: z.string().default("/avatar.svg"), // Path or URL to the avatar image
     bio: z.string().optional(), // About me
     philosophy: z.string().optional(), // About / Engineering Philosophy body
     careerStartDate: z.string().optional(), // exp. '2019-10' — when to start counting "years of experience" from (may differ from the earliest entry in `experience`, e.g. excluding freelance/student work)
